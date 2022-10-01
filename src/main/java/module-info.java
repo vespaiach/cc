@@ -6,4 +6,6 @@ module minhan.cc {
 
     opens minhan.cc to javafx.fxml;
     exports minhan.cc;
+    exports minhan.cc.piece;
+    opens minhan.cc.piece to javafx.fxml;
 }

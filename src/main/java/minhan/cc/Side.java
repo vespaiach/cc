@@ -1,11 +1,14 @@
 package minhan.cc;
 
 public enum Side {
-    Red (1), Black (200);
+    Red , Black;
 
-    private int side;
 
-    private Side(int s) {
-        this.side = s;
+    public boolean isRed() {
+        return this.equals(Side.Red);
+    }
+
+    public boolean isBlack() {
+        return this.equals(Side.Black);
     }
 }
