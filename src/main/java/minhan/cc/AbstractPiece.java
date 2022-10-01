@@ -3,7 +3,11 @@ package minhan.cc;
 public abstract class AbstractPiece {
     public int id;
     private State state;
-    private Side side;
+
+    public AbstractPiece(int id) {
+        this.id = id;
+        this.state = State.Alive;
+    }
 
     public boolean isAlive() {
         return this.state == State.Alive;
@@ -14,13 +18,14 @@ public abstract class AbstractPiece {
     }
 
     public Side getSide() {
-        return this.side;
+        return this.id > Side.Black.ordinal() ? Side.Black : Side.Red;
     }
 
-    public void setSide(Side side) {
-        this.side = side;
+    public boolean inBoundary(int fromX, int fromY, int toX, int toY) {
+        return fromX <= 8 && fromX >= 0 && toX <= 8 && toX >= 0 && fromY >= 0 && fromY <= 9 && toY >= 0 && toY <= 9;
     }
 
     public abstract void draw();
-    public abstract boolean validateMove();
+
+    public abstract boolean validateMove(int fromX, int fromY, int toX, int toY);
 }
